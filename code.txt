@@ -1,0 +1,45 @@
+
+class Band {
+  #name;
+  #members;
+
+  constructor(name, members) {
+    this.#name = name;
+    this.#members = members;
+  }
+
+  get name() {
+    return this.#name;
+  }
+
+  get members() {
+    return this.#members;
+  }
+
+  set name(newName) {
+    this.#name = newName;
+  }
+
+  addMember(newMember) {
+    if (newMember instanceof Musician) {
+      this.#members.push(newMember);
+    } else {
+      console.log("New member must be an instance of the Musician class.");
+    }
+  }
+
+  playMusic() {
+    this.#members.forEach((member) => {
+      member.play();
+    });
+  }
+}
+const musician1 = new Musician('John', 'guitar');
+const musician2 = new Musician('Mike', 'drums');
+const guitarist1 = new Guitarist('Tom', 'guitar', 'The Beatles');
+
+musician1.play(); // John грає на guitar
+musician2.play(); // Mike грає на drums
+guitarist1.play(); // Tom грає на guitar
+
+console.log(Musician.count); // виведе "3"
